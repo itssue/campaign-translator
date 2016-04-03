@@ -12,17 +12,17 @@ $(function(){
 				totalSpent += Number(child.tot_spent);
 			})
 			// prints totalSpent on screen
+			totalSpent = totalSpent.toFixed(2)
 			$('#spending-total').text("$" + totalSpent)
 		})
 	}
 
 	totalSpentFn();
 
-	
 
 	$('#convert').on('click', function() {
 		var tacoRate = 4.01;
-		var tacoValue = converToTacos(totalSpent);
+		var tacoValue = Math.floor(converToTacos(totalSpent));
 		$('#tacos').text(tacoValue);
 
 		function converToTacos(dollarAmt) {
