@@ -1,10 +1,10 @@
 var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
 
-function campaignFn(e) {
+function campaignFn() {
 	var apiURL = "http://realtime.influenceexplorer.com/api/new_filing/?format=json&page=1&page_size=100&apikey=" + apiKey;
-		$.get(apiURL, function(r) {		  
-		  context = r.results;
-			console.log(context);
+		$.get(apiURL, function(r) {		
+			$('#funds').text(r.results);
+
 		});
 }
 
