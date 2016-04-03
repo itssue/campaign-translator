@@ -2,13 +2,57 @@ $(function(){
 
 	var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
 
-	// Campaign Spending total on Screen
-	$.get("http://realtime.influenceexplorer.com/api//new_filing/?format=json&page=1&page_size=100&apikey=" + apiKey, function(resp){
-		var totalSpent = 0;
-		resp.results.forEach(function(child){
-			totalSpent += Number(child.tot_spent);
+	var totalSpent;
+
+	function totalSpentFn() {
+		$.get("http://realtime.influenceexplorer.com/api//new_filing/?format=json&page=1&page_size=100&apikey=" + apiKey, function(resp){
+			totalSpent = 0;
+			// loop through the API data and adds on to totalSpent
+			resp.results.forEach(function(child){
+				totalSpent += Number(child.tot_spent);
+			})
+			// prints totalSpent on screen
+			$('#spending-total').text("$" + totalSpent)
 		})
-		$('#spending-total').text("$" + totalSpent)
-	})
+	}
+
+	totalSpentFn();
+
+	
+
+	$('#convert').on('click', function() {
+		var tacoRate = 4.01;
+		var tacoValue = converToTacos(totalSpent);
+		$('#tacos').text(tacoValue);
+
+		function converToTacos(dollarAmt) {
+			return dollarAmt/tacoRate;
+		}
+	});
 
 })
+
+	// function convertBTC(){
+	// 	var spendingValue = document.getElementById("spending-total-static").textContent;
+	// 	var tacoValue = converToBTC(spendingValue);
+	// 	console.log(tacoValue);
+	// 	document.getElementById("tacos").textContent = converToBTC(spendingValue)
+	// }
+
+	// function converToBTC(dollarAmt) {
+	// 	return dollarAmt/tacoRate;
+	// }
+
+
+
+
+
+
+
+// function convertBTC(){
+// 	var usdValue = document.getElementById("usd").value;
+// 	var converted = usdValue/btcRate;
+
+// 	document.getElementById("btc").value = converted
+// }
+
