@@ -20,21 +20,23 @@ window.onload = $(function() {
 			// toLocaleString changed Number to String
 			$('#spending-total').text("$" + totalSpent.toLocaleString())
 
-			rate = 4.01;
-			item = "tacos.";
-			footer = "a taco at Taco Bell in New York City."
-			convertToFn(rate, item, footer);
+			convertToTaco();
 
 		})
 	}
 
 	totalSpentFn();
 
-	$('#tacos').on('click', function() {
+	function convertToTaco() {
 		rate = 4.01;
 		item = "tacos.";
 		footer = "a taco at Taco Bell in New York City."
 		convertToFn(rate, item, footer);
+	}
+
+	// Buttons 
+	$('#tacos').on('click', function() {
+		convertToTaco();
 	});
 
 	$('#cookies').on('click', function() {
@@ -44,10 +46,10 @@ window.onload = $(function() {
 		convertToFn(rate, item, footer);
 	});
 
-	$('#burger-combo').on('click', function() {
+	$('#burger').on('click', function() {
 		rate = 3.75;
-		item = "Double-double combos from In N Out, a drink and fries are included.";
-		footer = "a double-double combo from In N Out in Hacienda Heights, CA.";
+		item = "Double-doubles from In N Out.";
+		footer = "a double-double from In N Out in Hacienda Heights, CA.";
 		convertToFn(rate, item, footer);
 	});
 
