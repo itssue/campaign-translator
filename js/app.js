@@ -20,13 +20,10 @@ window.onload = $(function() {
 			// toLocaleString changed Number to String
 			$('#spending-total').text("$" + totalSpent.toLocaleString())
 
-			var tacoRate = 4.01;
-			var tacoValue = Math.floor(convertToTacos(totalSpent));
-			$('#amount').text(tacoValue.toLocaleString());
-
-			function convertToTacos(dollarAmt) {
-				return dollarAmt/tacoRate;
-			}
+			rate = 4.01;
+			item = "tacos.";
+			footer = "a taco at Taco Bell in New York City."
+			convertToFn(rate, item, footer);
 
 		})
 	}
@@ -65,6 +62,13 @@ window.onload = $(function() {
 		rate = 35000.00;
 		item = "Tesla Model 3s (just the base model).";
 		footer = "a Model 3 as listed on tesla.com.";
+		convertToFn(rate, item, footer);
+	});
+
+	$('#college').on('click', function() {
+		rate = 40000.00;
+		item = "years of college tuition.";
+		footer = "one year at NYU.";
 		convertToFn(rate, item, footer);
 	});
 
