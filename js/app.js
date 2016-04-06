@@ -1,11 +1,12 @@
 window.onload = $(function() {
 
-	var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
-
 	var totalSpent;
 	var rate;
 
+	// Sunlight Foundation API
 	function totalSpentFn() {
+
+		var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
 
 		$.get("http://realtime.influenceexplorer.com/api//new_filing/?format=json&page=1&page_size=100&committee_class=p&apikey=" + apiKey, function(resp){
 			totalSpent = 0;
@@ -27,6 +28,7 @@ window.onload = $(function() {
 
 	totalSpentFn();
 
+	// On Load Conversion
 	function convertToTaco() {
 		rate = 4.01;
 		item = "tacos.";
@@ -81,3 +83,15 @@ window.onload = $(function() {
 	}
 
 })
+
+// Flickr API
+
+// Flickr Photo Search: https://www.flickr.com/services/api/flickr.photos.search.html
+// https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=e598501c59970f467007edd0a7c4bf1f&user_id=56230114@N05
+
+
+// Flickr Favorite List
+// https://www.flickr.com/services/rest/?method=flickr.favorites.getList&format=json&api_key=e598501c59970f467007edd0a7c4bf1f&user_id=141621315@N04
+
+
+// https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
