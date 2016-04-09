@@ -1,0 +1,28 @@
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+html, body {
+    height: 100%;
+    width: 100%;
+  }
+
+body {
+	color: white;
+	font-size: 12px;
+	line-height: 1.4;
+	font-family: Helvetica, Arial, sans-serif;
+/*	background-color: #d0e4fe; */	
+	background: url("https://farm6.staticflickr.com/5089/5368227994_14ca118be6_b.jpg") no-repeat;
+	background-size: cover;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
