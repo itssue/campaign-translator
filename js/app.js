@@ -105,7 +105,7 @@ window.onload = $(function() {
 
 	$('#cars').on('click', function() {
 		rate = 35000.00;
-		item = "Tesla Model 3s (just the base model).";
+		item = "Tesla Model 3s.";
 		footer = "Amount is calculated based off the cost of a Model 3 as listed on tesla.com.";
 		convertToFn(rate, item, footer, carURL);
 	});
@@ -121,18 +121,17 @@ window.onload = $(function() {
 		$('#amount').text((Math.floor(totalSpent/rate)).toLocaleString());
 		$('#item').text(item);
 		$('#footer').text(footer);
-		$('body').css('background-image', 'url(' + url +')');
+		$('body').css('background-image', 'url(' + url +')').css({'background-image': 'linear-gradient(rgba(85,85,85,0.5))'});
+		// $('body').css('background-image', 'url(' + url +')');
 	}
 
 })
 
 
-  // background: 
-  //   linear-gradient(
-  //     rgba(85,85,85,0.5), 
-  //     rgba(85,85,85,0.3) 
-  //   ),
-  //   url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg") no-repeat;
+// $('.gradient').css({'background-image': 'linear-gradient(to top,  #2E2E28 0%, #4D4C48 100%)'});
+
+
+
 
 // Flickr API
 
