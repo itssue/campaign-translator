@@ -51,7 +51,7 @@ window.onload = $(function() {
 					carURL = buildPhotoUrl(child)
 				} else if (child.id == 3800730337) {
 					tacoURL = buildPhotoUrl(child)
-				} else if (child.id == 3800730337) {
+				} else if (child.id == 2607318827) {
 					collegeURL = buildPhotoUrl(child)
 				} else {
 					friesURL = buildPhotoUrl(child)
