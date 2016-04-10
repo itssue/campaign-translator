@@ -28,16 +28,41 @@ window.onload = $(function() {
 
 	totalSpentFn();
 
+	var burgerURL;
+	var cookieURL;
+	var tacoURL;
+	var carURL;
+	var collegeURL;
+	var friesURL;
+
 	function flickrFn() {
 
-		var apiKey = "e598501c59970f467007edd0a7c4bf1f"
+		var apiKey = "f95f992fe9c35c4ae05f2829a83524b7"
+		// var apiKey = "e598501c59970f467007edd0a7c4bf1f"
 
-		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=f95f992fe9c35c4ae05f2829a83524b7&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664700550303-975b5cf3c62e7db8&api_sig=22dadeda9db861a115ab72a7e8e1b9fe", function(resp){
-			var favePhotos = resp.photos.photo
-			favePhotos.forEach(function(child){
-				console.log(child.title)
+		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + apiKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664700550303-975b5cf3c62e7db8&api_sig=22dadeda9db861a115ab72a7e8e1b9fe", function(resp){
+			resp.photos.photo.forEach(function(child){
+				if (child.id == 4856283146) {
+				  burgerURL = buildPhotoUrl(child)
+				  // burgerURL = ('https://farm' + child.farm + '.staticflickr.com/' + child.server + '/' + child.id + '_' + child.secret + '_b.jpg');
+				} else if (child.id == 5507704211) {
+					cookieURL = buildPhotoUrl(child)
+				} else if (child.id == 26078408072) {
+					carURL = buildPhotoUrl(child)
+				} else if (child.id == 3800730337) {
+					tacoURL = buildPhotoUrl(child)
+				} else if (child.id == 3800730337) {
+					collegeURL = buildPhotoUrl(child)
+				} else {
+					friesURL = buildPhotoUrl(child)
+				}
 			})
 		})
+
+    function buildPhotoUrl(photo) {
+  		return 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
+   	}
+
 	}
 
 	flickrFn();
@@ -49,7 +74,7 @@ window.onload = $(function() {
 		rate = 4.01;
 		item = "tacos.";
 		footer = "Amount is calculated based off the cost of a taco at Taco Bell in NYC."
-		convertToFn(rate, item, footer);
+		convertToFn(rate, item, footer, tacoURL);
 	}
 
 	// Buttons 
@@ -61,46 +86,53 @@ window.onload = $(function() {
 		rate = 5.00;
 		item = "boxes of Girl Scout cookies.";
 		footer = "Amount is calculated based off the cost of a box of Samoas.";
-		convertToFn(rate, item, footer);
-		$('body').css('background-image', 'url(https://farm6.staticflickr.com/5018/5507704211_911d7da23a_b.jpg)');
+		convertToFn(rate, item, footer, cookieURL);
 	});
 
 	$('#burger').on('click', function() {
 		rate = 3.75;
 		item = "Double-doubles from In N Out.";
 		footer = "Amount is calculated based off the cost of a double-double from In N Out in Hacienda Heights, CA.";
-		convertToFn(rate, item, footer);
-		$('body').css('background-image', 'url(https://farm7.staticflickr.com/6129/5936805306_ed4db8d9f1_b.jpg)');
+		convertToFn(rate, item, footer, burgerURL);
 	});
 
-	$('#bikes').on('click', function() {
-		rate = 510.00;
-		item = "bikes.";
-		footer = "Amount is calculated based off the cost of a bike from Amazon.com.";
-		convertToFn(rate, item, footer);
+	$('#fries').on('click', function() {
+		rate = 3.00;
+		item = "fries.";
+		footer = "Amount is calculated based off larger fries from McDonalds in New York City.";
+		convertToFn(rate, item, footer, friesURL);
 	});
 
 	$('#cars').on('click', function() {
 		rate = 35000.00;
 		item = "Tesla Model 3s (just the base model).";
 		footer = "Amount is calculated based off the cost of a Model 3 as listed on tesla.com.";
-		convertToFn(rate, item, footer);
+		convertToFn(rate, item, footer, carURL);
 	});
 
 	$('#college').on('click', function() {
 		rate = 40000.00;
 		item = "years of college tuition.";
 		footer = "Amount is calculated based off the cost of one year at NYU.";
-		convertToFn(rate, item, footer);
+		convertToFn(rate, item, footer, collegeURL);
 	});
 
-	function convertToFn(rate, item, footer) {
+	function convertToFn(rate, item, footer, url) {
 		$('#amount').text((Math.floor(totalSpent/rate)).toLocaleString());
 		$('#item').text(item);
 		$('#footer').text(footer);
+		$('body').css('background-image', 'url(' + url +')');
 	}
 
 })
+
+
+  // background: 
+  //   linear-gradient(
+  //     rgba(85,85,85,0.5), 
+  //     rgba(85,85,85,0.3) 
+  //   ),
+  //   url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg") no-repeat;
 
 // Flickr API
 

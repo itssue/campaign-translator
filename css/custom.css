@@ -5,21 +5,9 @@ html, body {
 
 body {
 	font-family: Helvetica, Arial, sans-serif;
-	background-color: gray;
-  background: 
-    linear-gradient(
-      rgba(85,85,85,0.5), 
-      rgba(85,85,85,0.3) 
-    ),
-    url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg") no-repeat;
-/*  https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
-		Tacos: https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg
-		Tesla: https://farm2.staticflickr.com/1646/26078408072_16edbbd12f_b.jpg
-		Cookies: https://farm6.staticflickr.com/5018/5507704211_911d7da23a_b.jpg
-		NYU: https://farm4.staticflickr.com/3051/2607318827_c699f6b69a_b.jpg
-		Fries: https://farm3.staticflickr.com/2062/2132515150_003329d873_b.jpg
-		Burger: https://farm7.staticflickr.com/6129/5936805306_ed4db8d9f1_b.jpg */
-/*	background: url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg") no-repeat; */	background-size: cover;
+  background-image: url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg");
+  /*background-color: gray;*/
+	background-size: cover;
 	text-align: center;
 }
 
