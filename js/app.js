@@ -1,5 +1,5 @@
 window.onload = $(function() {
-
+	
 	var totalSpent;
 	var rate;
 
@@ -28,11 +28,27 @@ window.onload = $(function() {
 
 	totalSpentFn();
 
+	function flickrFn() {
+
+		var apiKey = "e598501c59970f467007edd0a7c4bf1f"
+
+		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=f95f992fe9c35c4ae05f2829a83524b7&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664700550303-975b5cf3c62e7db8&api_sig=22dadeda9db861a115ab72a7e8e1b9fe", function(resp){
+			var favePhotos = resp.photos.photo
+			favePhotos.forEach(function(child){
+				console.log(child.title)
+			})
+		})
+	}
+
+	flickrFn();
+
+
+
 	// On Load Conversion
 	function convertToTaco() {
 		rate = 4.01;
 		item = "tacos.";
-		footer = "a taco at Taco Bell in New York City."
+		footer = "Amount is calculated based off the cost of a taco at Taco Bell in NYC."
 		convertToFn(rate, item, footer);
 	}
 
@@ -44,35 +60,37 @@ window.onload = $(function() {
 	$('#cookies').on('click', function() {
 		rate = 5.00;
 		item = "boxes of Girl Scout cookies.";
-		footer = "a box of Samoas.";
+		footer = "Amount is calculated based off the cost of a box of Samoas.";
 		convertToFn(rate, item, footer);
+		$('body').css('background-image', 'url(https://farm6.staticflickr.com/5018/5507704211_911d7da23a_b.jpg)');
 	});
 
 	$('#burger').on('click', function() {
 		rate = 3.75;
 		item = "Double-doubles from In N Out.";
-		footer = "a double-double from In N Out in Hacienda Heights, CA.";
+		footer = "Amount is calculated based off the cost of a double-double from In N Out in Hacienda Heights, CA.";
 		convertToFn(rate, item, footer);
+		$('body').css('background-image', 'url(https://farm7.staticflickr.com/6129/5936805306_ed4db8d9f1_b.jpg)');
 	});
 
 	$('#bikes').on('click', function() {
 		rate = 510.00;
 		item = "bikes.";
-		footer = "a bike from Amazon.com.";
+		footer = "Amount is calculated based off the cost of a bike from Amazon.com.";
 		convertToFn(rate, item, footer);
 	});
 
 	$('#cars').on('click', function() {
 		rate = 35000.00;
 		item = "Tesla Model 3s (just the base model).";
-		footer = "a Model 3 as listed on tesla.com.";
+		footer = "Amount is calculated based off the cost of a Model 3 as listed on tesla.com.";
 		convertToFn(rate, item, footer);
 	});
 
 	$('#college').on('click', function() {
 		rate = 40000.00;
 		item = "years of college tuition.";
-		footer = "one year at NYU.";
+		footer = "Amount is calculated based off the cost of one year at NYU.";
 		convertToFn(rate, item, footer);
 	});
 
@@ -92,6 +110,5 @@ window.onload = $(function() {
 
 // Flickr Favorite List
 // https://www.flickr.com/services/rest/?method=flickr.favorites.getList&format=json&api_key=e598501c59970f467007edd0a7c4bf1f&user_id=141621315@N04
-
 
 // https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
