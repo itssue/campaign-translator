@@ -3,29 +3,6 @@ window.onload = $(function() {
 	var totalSpent;
 	var rate;
 
-	// Sunlight Foundation API
-	function totalSpentFn() {
-
-		var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
-
-		$.get("http://realtime.influenceexplorer.com/api//new_filing/?format=json&page=1&page_size=100&committee_class=p&apikey=" + apiKey, function(resp){
-			totalSpent = 0;
-			// loop through the API data and adds on to totalSpent
-			resp.results.forEach(function(child){
-				totalSpent += Number(child.tot_spent);
-			})
-			// changes number to only display 2 decimal places
-			// toFixed changes Number to String
-			totalSpent = Number(totalSpent.toFixed(2));
-			// prints totalSpent on screen
-			// toLocaleString changed Number to String
-			$('#spending-total').text("$" + totalSpent.toLocaleString())
-
-		})
-	}
-
-	totalSpentFn();
-
 	var burgerURL;
 	var cookieURL;
 	var tacoURL;
@@ -33,48 +10,72 @@ window.onload = $(function() {
 	var collegeURL;
 	var friesURL;
 
+	// flickr API Key -- this changes often
 	var flickrKey = "8c10bd87158f85125ed6e2797f10cdd3"
 
 	function flickrFn() {
 
-		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664708240824-1c8d5638ce7c0582&api_sig=e72bbfb697c8edb8879d23b5ac6bec6f", function(resp){
-			resp.photos.photo.forEach(function(child){
-				if (child.id == 4856283146) {
-				  burgerURL = buildPhotoUrl(child)
-				} else if (child.id == 5507704211) {
-					cookieURL = buildPhotoUrl(child)
-				} else if (child.id == 26078408072) {
-					carURL = buildPhotoUrl(child)
-				} else if (child.id == 3800730337) {
-					tacoURL = buildPhotoUrl(child)
-				} else if (child.id == 2607318827) {
-					collegeURL = buildPhotoUrl(child)
-				} else {
-					friesURL = buildPhotoUrl(child)
-				}
-			})
+    $.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664708240824-1c8d5638ce7c0582&api_sig=e72bbfb697c8edb8879d23b5ac6bec6f", function(resp){
+      resp.photos.photo.forEach(function(child){
+          if (child.id == 4856283146) {
+            burgerURL = buildPhotoUrl(child)
+          } else if (child.id == 5507704211) {
+              cookieURL = buildPhotoUrl(child)
+          } else if (child.id == 26078408072) {
+              carURL = buildPhotoUrl(child)
+          } else if (child.id == 3800730337) {
+              tacoURL = buildPhotoUrl(child)
+          } else if (child.id == 2607318827) {
+              collegeURL = buildPhotoUrl(child)
+          } else {
+              friesURL = buildPhotoUrl(child)
+          }
+      });
 
-			convertToTaco();
-			
-		})
-	}
+      totalSpentFn();
+
+    })
+  }
+
+	// Sunlight Foundation API
+  function totalSpentFn() {
+
+    var apiKey = "81566c0b5b9d44dab813f065c2af1baf"
+
+    $.get("http://realtime.influenceexplorer.com/api//new_filing/?format=json&page=1&page_size=100&committee_class=p&apikey=" + apiKey, function(resp){
+        totalSpent = 0;
+        // loop through the API data and adds on to totalSpent
+        resp.results.forEach(function(child){
+            totalSpent += Number(child.tot_spent);
+        })
+        // changes number to only display 2 decimal places
+        // toFixed changes Number to String
+        totalSpent = Number(totalSpent.toFixed(2));
+        // prints totalSpent on screen
+        // toLocaleString changed Number to String
+        $('#spending-total').text("$" + totalSpent.toLocaleString())
+
+        convertToTaco();
+    })
+  }
+
+  flickrFn();
 
   function buildPhotoUrl(photo) {
 		return 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
 	}
 
-	flickrFn();
-
+	// Find images based off the term entered
 	function flickrSearchFn(item, callback) {
     $.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrKey + "&tags=" + item + "&format=json&nojsoncallback=1", function(resp){
 
+    	// eventually make this be a random image
       if (callback) {
           callback(buildPhotoUrl(resp.photos.photo[0]));
       }
       
     })
   }
-
 
 	// On Load Conversion
 	function convertToTaco() {
@@ -124,6 +125,7 @@ window.onload = $(function() {
 		convertToFn(rate, item, footer, collegeURL);
 	});
 
+	// user generated
 	$('.submit').on('click', function() {
     item = $('.search-term').val();
     rate = $('.rate-input').val();
@@ -137,8 +139,6 @@ window.onload = $(function() {
 
   })
 
-	
-
 	function convertToFn(rate, item, footer, url) {
 		$('#amount').text((Math.floor(totalSpent/rate)).toLocaleString());
 		$('#item').text(item);
@@ -147,18 +147,3 @@ window.onload = $(function() {
 	}
 
 })
-
-
-
-
-
-// Flickr API
-
-// Flickr Photo Search: https://www.flickr.com/services/api/flickr.photos.search.html
-// https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=e598501c59970f467007edd0a7c4bf1f&user_id=56230114@N05
-
-
-// Flickr Favorite List
-// https://www.flickr.com/services/rest/?method=flickr.favorites.getList&format=json&api_key=e598501c59970f467007edd0a7c4bf1f&user_id=141621315@N04
-
-// https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';

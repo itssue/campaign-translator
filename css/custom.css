@@ -5,8 +5,7 @@ html, body {
 
 body {
 	font-family: Helvetica, Arial, sans-serif;
-  background-image: url("https://farm3.staticflickr.com/2645/3800730337_87dc0e617a_b.jpg");
-  /*background-color: gray;*/
+  background-color: #e0e0e0;
 	background-size: cover;
 	text-align: center;
 }
@@ -104,4 +103,3 @@ input[type="text"] {
   box-shadow: none;
   border-radius: none;
 }
-
