@@ -59,25 +59,14 @@ h2 {
 	display: block;
   position: relative;
   top: 40%;
-/*  transform: translateY(-50%);*/
   line-height: normal;
   margin: auto;
   margin-top: -100px;
 }​
 
-/*#center {
-  left: 0;
-  line-height: normal;
-  margin: auto;
-  margin-top: -100px;
-  position: absolute;
-  top: 50%;
-  width: 100%;
-}​*/
-
 
 .btn {
-    padding: 44px;
+    padding: 40px 40px 40px 40px;
     border: 0 none;
     font-weight: 700;
     letter-spacing: 1px;
@@ -106,12 +95,13 @@ h2 {
    top: 50%;
 }
 
-/*.dropdown-pull-right{
-  float: right !important;
-  right: 0;
-  left: auto;
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
 }
-.dropdown-pull-right > .dropdown-menu {
-    right: 0;
-    left: auto;
- }*/
+

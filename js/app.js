@@ -21,8 +21,6 @@ window.onload = $(function() {
 			// toLocaleString changed Number to String
 			$('#spending-total').text("$" + totalSpent.toLocaleString())
 
-			convertToTaco();
-
 		})
 	}
 
@@ -55,6 +53,9 @@ window.onload = $(function() {
 					friesURL = buildPhotoUrl(child)
 				}
 			})
+
+			convertToTaco();
+			
 		})
 	}
 
@@ -64,11 +65,15 @@ window.onload = $(function() {
 
 	flickrFn();
 
-	function flickrSearchFn(item) {
-		$.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrKey + "&tags=" + item + "&format=json&nojsoncallback=1", function(resp){
-			buildPhotoUrl(resp.photos.photo[0])
-		})
-	}
+	function flickrSearchFn(item, callback) {
+    $.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrKey + "&tags=" + item + "&format=json&nojsoncallback=1", function(resp){
+
+      if (callback) {
+          callback(buildPhotoUrl(resp.photos.photo[0]));
+      }
+      
+    })
+  }
 
 
 	// On Load Conversion
@@ -120,18 +125,17 @@ window.onload = $(function() {
 	});
 
 	$('.submit').on('click', function() {
-			item = $('.search-term').val();
-			url = flickrSearchFn(item);
-			rate = $('.rate-input').val();
-			footer = "";
-		  // var searchTerm = $('.search-term').val();
-		  // $('#item').text(searchTerm);
-		  // var customRate = $('.rate-input').val();
-		  // $('#amount').text((Math.floor(totalSpent/customRate)).toLocaleString());
-		  convertToFn(rate, item, footer, url);
-		  $('.search-term').val('')
-		  $('.rate-input').val('')
-	})
+    item = $('.search-term').val();
+    rate = $('.rate-input').val();
+    footer = "";
+
+    flickrSearchFn(item, function(url) {
+        convertToFn(rate, item, footer, url);
+      $('.search-term').val('')
+      $('.rate-input').val('')
+    });
+
+  })
 
 	
 
