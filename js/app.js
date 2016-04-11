@@ -35,12 +35,11 @@ window.onload = $(function() {
 	var collegeURL;
 	var friesURL;
 
+	var flickrKey = "8c10bd87158f85125ed6e2797f10cdd3"
+
 	function flickrFn() {
 
-		var apiKey = "8c10bd87158f85125ed6e2797f10cdd3"
-		// var apiKey = "e598501c59970f467007edd0a7c4bf1f"
-
-		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + apiKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664708240824-1c8d5638ce7c0582&api_sig=e72bbfb697c8edb8879d23b5ac6bec6f", function(resp){
+		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664708240824-1c8d5638ce7c0582&api_sig=e72bbfb697c8edb8879d23b5ac6bec6f", function(resp){
 			resp.photos.photo.forEach(function(child){
 				if (child.id == 4856283146) {
 				  burgerURL = buildPhotoUrl(child)
@@ -57,15 +56,19 @@ window.onload = $(function() {
 				}
 			})
 		})
+	}
 
-    function buildPhotoUrl(photo) {
-  		return 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
-   	}
-
+  function buildPhotoUrl(photo) {
+		return 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
 	}
 
 	flickrFn();
 
+	function flickrSearchFn(item) {
+		$.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrKey + "&tags=" + item + "&format=json&nojsoncallback=1", function(resp){
+			buildPhotoUrl(resp.photos.photo[0])
+		})
+	}
 
 
 	// On Load Conversion
@@ -116,6 +119,22 @@ window.onload = $(function() {
 		convertToFn(rate, item, footer, collegeURL);
 	});
 
+	$('.submit').on('click', function() {
+			item = $('.search-term').val();
+			url = flickrSearchFn(item);
+			rate = $('.rate-input').val();
+			footer = "";
+		  // var searchTerm = $('.search-term').val();
+		  // $('#item').text(searchTerm);
+		  // var customRate = $('.rate-input').val();
+		  // $('#amount').text((Math.floor(totalSpent/customRate)).toLocaleString());
+		  convertToFn(rate, item, footer, url);
+		  $('.search-term').val('')
+		  $('.rate-input').val('')
+	})
+
+	
+
 	function convertToFn(rate, item, footer, url) {
 		$('#amount').text((Math.floor(totalSpent/rate)).toLocaleString());
 		$('#item').text(item);
@@ -124,6 +143,8 @@ window.onload = $(function() {
 	}
 
 })
+
+
 
 
 
