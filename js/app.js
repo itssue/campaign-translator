@@ -72,7 +72,7 @@ window.onload = $(function() {
 	// On Load Conversion
 	function convertToTaco() {
 		rate = 4.01;
-		item = "tacos.";
+		item = "tacos";
 		footer = "Amount is calculated based off the cost of a taco at Taco Bell in NYC."
 		convertToFn(rate, item, footer, tacoURL);
 	}
@@ -84,35 +84,35 @@ window.onload = $(function() {
 
 	$('#cookies').on('click', function() {
 		rate = 5.00;
-		item = "boxes of Girl Scout cookies.";
+		item = "boxes of Girl Scout cookies";
 		footer = "Amount is calculated based off the cost of a box of Samoas.";
 		convertToFn(rate, item, footer, cookieURL);
 	});
 
 	$('#burger').on('click', function() {
 		rate = 3.75;
-		item = "Double-doubles from In N Out.";
+		item = "double-doubles from In N Out";
 		footer = "Amount is calculated based off the cost of a double-double from In N Out in Hacienda Heights, CA.";
 		convertToFn(rate, item, footer, burgerURL);
 	});
 
 	$('#fries').on('click', function() {
 		rate = 3.00;
-		item = "fries.";
+		item = "fries";
 		footer = "Amount is calculated based off larger fries from McDonalds in New York City.";
 		convertToFn(rate, item, footer, friesURL);
 	});
 
 	$('#cars').on('click', function() {
 		rate = 35000.00;
-		item = "Tesla Model 3s.";
+		item = "Tesla Model 3s";
 		footer = "Amount is calculated based off the cost of a Model 3 as listed on tesla.com.";
 		convertToFn(rate, item, footer, carURL);
 	});
 
 	$('#college').on('click', function() {
 		rate = 40000.00;
-		item = "years of college tuition.";
+		item = "years of college tuition";
 		footer = "Amount is calculated based off the cost of one year at NYU.";
 		convertToFn(rate, item, footer, collegeURL);
 	});

@@ -3,52 +3,67 @@
 <head>
   <title>Campaign Translator</title>
 	
-	<!-- Bootstrap -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<!-- /end Bootstrap -->
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- external CSS link -->
   <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="twemoji-awesome.css">
-	
+
 </head>
 
 <body>
 
   <div id="container">
-  <p><span id="spending-total"></span> has been spent on the presidential campaign&mdash;that's</p>
+
+  <div id="top">
+  <p><strong><span id="spending-total"></span></strong> has been spent on the presidential campaign&mdash;that's</p>
+  </div>
   
   <div id="center">
   <h1><span id="amount"></span></h1>
-  <p><span id="item"></span></p>
+
+    <!-- Single button -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="item">
+        tacos</span> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#" id="tacos">tacos</a></li>
+        <li><a href="#" id="cookies">cookies</a></li>
+        <li><a href="#" id="burger">burgers</a></li>
+        <li><a href="#" id="fries">fries</a></li>
+        <li><a href="#" id="cars">cars</a></li>
+        <li><a href="#" id="college">years of college</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">+ add your own</a></li>
+      </ul>
+    </div>
+
+<!--   <p><span id="item"></span></p> -->
   </div>
 
-<!--   <h2><span id="spending-total"></span></h2>
-  <p>has been spent on the presidential campaign&mdash;that's</p>
-  <h1><span id="amount"></span></h1>
-  <p><span id="item"></span></p> -->
-
-<!--   <p>You could have bought</p>
-  <h1><span id="amount"></span></h1>
-  <p><span id="item"></span> with the <span id="spending-total"></span> that has been spent on the presidential campaign.</p> -->
 
   <div id="bottom">
   <p><span id="footer"></span></p>
   <p>Made by Sue Lee. All rights reserved.</p>
-  <button id="tacos">TACOS</button>
+<!--   <button id="tacos">TACOS</button>
   <button id="cookies">COOKIES</button>
   <button id="burger">BURGERS</button>
   <button id="fries">FRIES</button>
   <button id="cars">CARS</button>
-  <button id="college">COLLEGE</button>
+  <button id="college">COLLEGE</button> -->
   </div>
 
   <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
   <script src="js/app.js"></script>
+
+
+
   </div>
 
 </body>
