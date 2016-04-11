@@ -37,14 +37,13 @@ window.onload = $(function() {
 
 	function flickrFn() {
 
-		var apiKey = "f95f992fe9c35c4ae05f2829a83524b7"
+		var apiKey = "8c10bd87158f85125ed6e2797f10cdd3"
 		// var apiKey = "e598501c59970f467007edd0a7c4bf1f"
 
-		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + apiKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664700550303-975b5cf3c62e7db8&api_sig=22dadeda9db861a115ab72a7e8e1b9fe", function(resp){
+		$.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + apiKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664708240824-1c8d5638ce7c0582&api_sig=e72bbfb697c8edb8879d23b5ac6bec6f", function(resp){
 			resp.photos.photo.forEach(function(child){
 				if (child.id == 4856283146) {
 				  burgerURL = buildPhotoUrl(child)
-				  // burgerURL = ('https://farm' + child.farm + '.staticflickr.com/' + child.server + '/' + child.id + '_' + child.secret + '_b.jpg');
 				} else if (child.id == 5507704211) {
 					cookieURL = buildPhotoUrl(child)
 				} else if (child.id == 26078408072) {
@@ -106,7 +105,7 @@ window.onload = $(function() {
 	$('#cars').on('click', function() {
 		rate = 35000.00;
 		item = "Tesla Model 3s";
-		footer = "Amount is calculated based off the cost of a Model 3 as listed on tesla.com.";
+		footer = "Amount is calculated based off the cost of a base model Tesla Model 3.";
 		convertToFn(rate, item, footer, carURL);
 	});
 
@@ -121,15 +120,10 @@ window.onload = $(function() {
 		$('#amount').text((Math.floor(totalSpent/rate)).toLocaleString());
 		$('#item').text(item);
 		$('#footer').text(footer);
-		$('body').css('background-image', 'url(' + url +')').css({'background-image': 'linear-gradient(rgba(85,85,85,0.5))'});
-		// $('body').css('background-image', 'url(' + url +')');
+		$('body').css('background-image', 'url(' + url +')');
 	}
 
 })
-
-
-// $('.gradient').css({'background-image': 'linear-gradient(to top,  #2E2E28 0%, #4D4C48 100%)'});
-
 
 
 
