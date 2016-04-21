@@ -11,11 +11,11 @@ window.onload = $(function() {
 	var friesURL;
 
 	// flickr API Key -- this changes often
-	var flickrKey = "907dea022b0dfc2ec993df236bc0fe6c"
+	var flickrKey = "bb0743ec1df4ea2f3a99248d551e115e"
 
 	function flickrFn() {
 
-    $.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157664821088033-1d18f081081ce6b3&api_sig=08c4ab89dea86242f8ebfdbc5e9b4d95", function(resp){
+    $.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157665113239143-0dda4dd3bc8ffc34&api_sig=9cf6032319f4e211aa998588e6a493f4", function(resp){
       resp.photos.photo.forEach(function(child){
           if (child.id == 4856283146) {
             burgerURL = buildPhotoUrl(child)
