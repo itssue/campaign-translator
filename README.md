@@ -5,3 +5,5 @@ Campaign Translator uses the [Sunlight Foundation][Sunlight Foundation] API to s
 [Sunlight Foundation]: http://sunlightfoundation.com/
 
 Here is an example:
+
+![tacos](images/tacos.png)
