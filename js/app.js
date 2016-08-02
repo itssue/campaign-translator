@@ -15,7 +15,7 @@ window.onload = $(function() {
 
 	function flickrFn() {
 
-    $.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157665113239143-0dda4dd3bc8ffc34&api_sig=9cf6032319f4e211aa998588e6a493f4", function(resp){
+    $.get("https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=" + flickrKey + "&user_id=141621315%40N04&format=json&nojsoncallback=1&auth_token=72157670801913000-5cacd910c4f60657&api_sig=8031bf2d12531ad897474376389e1a46", function(resp){
       resp.photos.photo.forEach(function(child){
           if (child.id == 4856283146) {
             burgerURL = buildPhotoUrl(child)
