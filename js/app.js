@@ -11,7 +11,7 @@ window.onload = $(function() {
 	var friesURL;
 
 	// flickr API Key -- this changes often
-	var flickrKey = "bb0743ec1df4ea2f3a99248d551e115e"
+	var flickrKey = "5f61faab30dd5d0f608598717b6a128b"
 
 	function flickrFn() {
 
